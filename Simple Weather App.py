@@ -22,7 +22,7 @@ def advertencia_windows(titulo, mensaje):
 def info_windows(titulo, mensaje):
     ctypes.windll.user32.MessageBoxW(0, mensaje, titulo, 0x40)  # 0x40 = icono de información
 
-API_KEY = "5c97b0aee92db0df591194a41bcc65ab"
+API_KEY = "1234567890" # YOUR API KEY HERE / TU API KEY AQUÍ
 
 opciones_archivo = "settings.json"
 opciones = {
@@ -513,4 +513,5 @@ mostrar_pantalla_cargando()
 threading.Thread(target=cargar_datos_iniciales, daemon=True).start()
 
 print("Interfaz iniciada!")
+
 ventana.mainloop()
