@@ -22,7 +22,7 @@ def advertencia_windows(titulo, mensaje):
 def info_windows(titulo, mensaje):
     ctypes.windll.user32.MessageBoxW(0, mensaje, titulo, 0x40)  # 0x40 = icono de información
 
-API_KEY = "12345678" # YOUR API KEY HERE / TU CLAVE API AQUÍ
+API_KEY = "12345789" # YOUR API KEY HERE / TU CLAVE API AQUÍ
 
 opciones_archivo = "settings.json"
 opciones = {
@@ -366,7 +366,12 @@ def mostrar_clima_actual():
 
     frame_actual.pack(fill="both", expand=True)
 
-    codigo = data_actual["weather"][0]["id"]
+    try:
+        codigo = data_actual["weather"][0]["id"]
+    except:
+        error_windows("Error", "Unable to get weather data. Please check your internet connection and try again.")
+        ventana.destroy()
+        sys.exit()
     temp = data_actual["main"]["temp"]
     humedad = data_actual["main"]["humidity"]
     viento = data_actual["wind"]["speed"]
